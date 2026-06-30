@@ -1014,14 +1014,14 @@ public class SpaceProbeRunner {
 
         System.out.println("Total Size Without filter: " + probes.size());
         Iterator<SpaceProbeDto> itr=probes.iterator();
-        //filter by status
-        int sCount=0;
+        //----------------------------------------------filter by status
+       /* int sCount=0;
         while(itr.hasNext())
         {
             SpaceProbeDto element=itr.next();
             if(element.getStatus().equalsIgnoreCase("Success"))
             {
-                System.out.println(element);
+                //System.out.println(element);
                 sCount++;
             }
         }
@@ -1034,7 +1034,7 @@ public class SpaceProbeRunner {
             SpaceProbeDto element=itr.next();
             if(element.getPropulsionType().equalsIgnoreCase("Solar Electric"))
             {
-                System.out.println(element);
+                //System.out.println(element);
                 pCount++;
             }
         }
@@ -1048,7 +1048,7 @@ public class SpaceProbeRunner {
             SpaceProbeDto element = itr.next();
 
             if (element.isActive()) {
-                System.out.println(element);
+                //System.out.println(element);
                 activeCount++;
             }
         }
@@ -1062,7 +1062,7 @@ public class SpaceProbeRunner {
             SpaceProbeDto element = itr.next();
 
             if (element.getTargetCelestialBody().equalsIgnoreCase("Mars")) {
-                System.out.println(element);
+                //System.out.println(element);
                 marsCount++;
             }
         }
@@ -1075,16 +1075,44 @@ public class SpaceProbeRunner {
             SpaceProbeDto element = itr.next();
 
             if (element.getManufacturer().equalsIgnoreCase("NASA")) {
-                System.out.println(element);
+                //System.out.println(element);
                 nasaCount++;
             }
         }
         System.out.println("NASA probes count: " + nasaCount);
 
-        //remove by status
-        //Iterator<SpaceProbeDto> itr = probes.iterator();
+        itr=probes.iterator();
+        int missionDurationCount=0;
 
-     /*   while (itr.hasNext()) {
+        while(itr.hasNext())
+        {
+            SpaceProbeDto element=itr.next();
+            if (element.getMissionDurationDays()>365)
+            {
+                //System.out.println(element);
+                missionDurationCount++;
+            }
+        }
+        System.out.println("Mission duration > 365 days count: " + missionDurationCount);
+
+        itr=probes.iterator();
+        int powerOutput=0;
+
+        while(itr.hasNext())
+        {
+            SpaceProbeDto element=itr.next();
+            if(element.getPowerOutput()>1000)
+            {
+                //System.out.println(element);
+                powerOutput++;
+            }
+        }
+        System.out.println("power output >1000 watts count: "+powerOutput);
+
+
+        //---------------------------------remove by status
+
+        while (itr.hasNext()) {
             SpaceProbeDto element = itr.next();
 
             if (element.getStatus().equalsIgnoreCase("Failed")) {
@@ -1138,7 +1166,8 @@ public class SpaceProbeRunner {
         System.out.println(probes.size());
 */
 
-        //Iterator<SpaceProbeDto> itr = probes.iterator();
+        //-----------------------Multiple Property Conditions
+        itr=probes.iterator();
         int count1 = 0;
 
         while (itr.hasNext()) {
@@ -1146,13 +1175,13 @@ public class SpaceProbeRunner {
 
             if (element.getStatus().equalsIgnoreCase("Success")
                     && element.isActive()) {
-                System.out.println(element);
+                //System.out.println(element);
                 count1++;
             }
         }
-        System.out.println(count1);
+        System.out.println("elements having status(Success) and  isActive(true): "+count1);
 
-        itr = probes.iterator();
+    /*    itr = probes.iterator();
 
         while (itr.hasNext()) {
             SpaceProbeDto element = itr.next();
@@ -1274,6 +1303,6 @@ public class SpaceProbeRunner {
                 count5++;
             }
         }
-        System.out.println(count5);
+        System.out.println(count5);*/
     }
 }

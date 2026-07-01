@@ -57,5 +57,11 @@ public class MovieTicketRunner {
         boolean check3=movieTickets1.isEmpty();
         System.out.println("is movieTickets1 empty: "+check3);
 
+
+
+        //add at specific index
+        movieTickets.add(0,new MovieTicketDto("Thrones",10,100.0,LocalTime.of(12,34,21),"Madiwala"));
+        System.out.println("movieTicket dto status after add(index,dto):\n"+movieTickets);
+        System.out.println("size after add(index,dto):"+movieTickets.size());
     }
 }

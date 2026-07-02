@@ -112,7 +112,9 @@ public class MovieTicketRunner {
         System.out.println("-------------------------------------------------------------------");
 
         //sort
-       // System.out.println(movieTickets.sort(Comparator.comparingInt(MovieTicketDto::getTicketCount));
+        movieTickets.sort(Comparator.comparingInt(MovieTicketDto::getTicketCount));
+        System.out.println("sorted list: \n" + movieTickets);
+        System.out.println("-------------------------------------------------------------------");
 
     }
 }

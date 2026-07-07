@@ -1,5 +1,6 @@
 package com.xworkz.streamapi.filter;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Pincode {
@@ -67,6 +68,11 @@ public class Pincode {
                 .filter(city-> String.valueOf(city.getPincode()).contains("1"))
                 .forEach(city-> System.out.println(city.getName()+","+city.getPincode()));
 
+        System.out.println("----------------------------cities with even pincode numbers ----------------------------");
+        cities.stream()
+                .filter(city-> city.getPincode()%2==0)
+                .forEach(city->System.out.println(city.getName()+","+city.getPincode()));
 
+        System.out.println("-------------------------------------------------------------");
     }
 }

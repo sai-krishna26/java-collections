@@ -1,4 +1,4 @@
-package com.xworkz.streamapi;
+package com.xworkz.streamapi.basic_diff;
 
 import java.util.Arrays;
 import java.util.List;

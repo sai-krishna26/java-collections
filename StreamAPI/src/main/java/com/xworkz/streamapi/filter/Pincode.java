@@ -52,27 +52,19 @@ public class Pincode {
         cities.add(new City("Nagpur", 440001L));
         cities.add(new City("Surat", 411001L));
 
-        System.out.println("------------------pincodes between 500000-599999-----------------");
+        System.out.println("------------------cities with odd pincode numbers---------------------------");
         cities.stream()
-                .filter(city-> city.getPincode()>=500000L && city.getPincode()<600000L)
-                .forEach(city -> System.out.println(city.getName()+": "+city.getPincode()));
-
-
-        System.out.println("------------------cities with names longer than 6 characters  -----------------");
-        cities.stream()
-                .filter(city->city.getName().length()>6)
-                .forEach(city-> System.out.println(city.getName()));
-
-        System.out.println("------------------cities where pincode contains digit '1' ---------------------");
-        cities.stream()
-                .filter(city-> String.valueOf(city.getPincode()).contains("1"))
-                .forEach(city-> System.out.println(city.getName()+","+city.getPincode()));
-
-        System.out.println("----------------------------cities with even pincode numbers ----------------------------");
-        cities.stream()
-                .filter(city-> city.getPincode()%2==0)
+                .filter(city-> city.getPincode()%2!=0)
                 .forEach(city->System.out.println(city.getName()+","+city.getPincode()));
 
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("------------------cities starting with 'M' or 'D'-------------------------------");
+        cities.stream()
+                .filter(city-> city.getName().startsWith("M") || city.getName().startsWith("D"))
+                .forEach(city-> System.out.println(city.getName()+","+city.getPincode()));
+
+        System.out.println("------------------cities where pincode is divisible by 3-------------------------");
+        cities.stream()
+                .filter(city->city.getPincode()%3==0)
+                .forEach(city->System.out.println(city.getName()+","+city.getPincode()));
     }
 }

@@ -22,6 +22,4 @@ public class ProductDto implements Serializable,Comparable<ProductDto> {
         ProductDto right = o;
         return left.productName.compareTo(right.productName);
     }
-
-
 }

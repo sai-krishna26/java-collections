@@ -1,4 +1,4 @@
-package com.xworkz.sort;
+package com.xworkz.sort.dto;
 import lombok.*;
 
 import java.io.Serializable;

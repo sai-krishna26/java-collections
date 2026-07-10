@@ -1,7 +1,6 @@
 package com.xworkz.sort.runner;
 
 import com.xworkz.sort.dto.CricketDto;
-import com.xworkz.sort.sort.NumberOfMatchesSorter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,14 +33,24 @@ public class CricketDtoRunner {
         list.add(cricketDto10);
         list.add(cricketDto);
 
-        Comparator<CricketDto> teamNameComparator=(o1,o2)->
+        /*Comparator<CricketDto> teamNameComparator=(o1,o2)->
         {
             System.out.println("comparing :"+o1 +" with"+o2);
             return o2.getTeamName().compareTo(o1.getTeamName());
         };
 
+
         Collections.sort(list,teamNameComparator);
 
-        list.forEach((cricket)-> System.out.println(cricket));
+        list.forEach((cricket)-> System.out.println(cricket));*/
+
+        Comparator<CricketDto> byCountry=(o1,o2)->
+        {
+           return o1.getCountry().compareTo(o2.getCountry());
+        };
+
+        Collections.sort(list,byCountry);
+        list.forEach(System.out::println);
+
     }
 }

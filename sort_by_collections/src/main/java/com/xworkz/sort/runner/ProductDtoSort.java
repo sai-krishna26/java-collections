@@ -1,4 +1,4 @@
-package com.xworkz.sort.sort;
+package com.xworkz.sort.runner;
 
 import com.xworkz.sort.dto.ProductDto;
 

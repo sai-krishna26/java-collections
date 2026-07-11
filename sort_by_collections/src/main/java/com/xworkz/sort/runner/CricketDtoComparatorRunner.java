@@ -1,14 +1,17 @@
 package com.xworkz.sort.runner;
 
 import com.xworkz.sort.dto.CricketDto;
+import com.xworkz.sort.sort.CricketCountryComparator;
+import com.xworkz.sort.sort.CricketEndDateComparator;
+import com.xworkz.sort.sort.CricketNoOfMarchesComparable;
+import com.xworkz.sort.sort.CricketStartDateComparator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class CricketDtoRunner {
+public class CricketDtoComparatorRunner {
     public static void main(String[] args) {
         CricketDto cricketDto=new CricketDto(123,"India","India", LocalDate.of(2023,12,31),LocalDate.of(2023,12,31));
         CricketDto cricketDto2 = new CricketDto(100, "Australia", "Australia", LocalDate.of(2023, 1, 15), LocalDate.of(2023, 3, 20));
@@ -33,24 +36,21 @@ public class CricketDtoRunner {
         list.add(cricketDto10);
         list.add(cricketDto);
 
-        /*Comparator<CricketDto> teamNameComparator=(o1,o2)->
-        {
-            System.out.println("comparing :"+o1 +" with"+o2);
-            return o2.getTeamName().compareTo(o1.getTeamName());
-        };
-
-
-        Collections.sort(list,teamNameComparator);
-
-        list.forEach((cricket)-> System.out.println(cricket));*/
-
-        Comparator<CricketDto> byCountry=(o1,o2)->
-        {
-           return o1.getCountry().compareTo(o2.getCountry());
-        };
-
-        Collections.sort(list,byCountry);
+        System.out.println("-------------sorting by country--------------------");
+        Collections.sort(list,new CricketCountryComparator());
         list.forEach(System.out::println);
 
+        System.out.println("\n----------------------sorting by noOfMatches-------------------------");
+
+         Collections.sort(list,new CricketNoOfMarchesComparable());
+         list.forEach(System.out::println);
+
+         System.out.println("\n----------------------sorting by startDate-------------------------");
+         Collections.sort(list,new CricketStartDateComparator());
+         list.forEach(System.out::println);
+
+        System.out.println("\n-----------------------sorting by endDate-------------------------");
+        Collections.sort(list,new CricketEndDateComparator());
+        list.forEach(System.out::println);
     }
 }

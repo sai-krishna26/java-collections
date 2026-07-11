@@ -4,10 +4,9 @@ import com.xworkz.sort.dto.CricketDto;
 
 import java.util.Comparator;
 
-public class NumberOfMatchesSorter implements Comparator<CricketDto> {
-
+public class CricketNoOfMarchesComparable implements Comparator<CricketDto> {
     @Override
     public int compare(CricketDto o1, CricketDto o2) {
-        return Integer.compare(o1.getNoOfMatches(),o2.getNoOfMatches());
+        return o2.getNoOfMatches()-o1.getNoOfMatches();
     }
 }

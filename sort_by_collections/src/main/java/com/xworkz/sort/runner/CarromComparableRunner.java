@@ -21,7 +21,6 @@ public class CarromComparableRunner{
         carromDtoList.add(carromDto3);
         carromDtoList.add(carromDto4);
 
-
         Collections.sort(carromDtoList);
         carromDtoList.forEach(System.out::println);
     }

@@ -10,7 +10,7 @@ import java.util.Comparator;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CricketDto implements Serializable, Comparator<CricketDto> {
+public class CricketDto implements Serializable, Comparable<CricketDto> {
     private int noOfMatches;
     private String teamName;
     private String country;
@@ -18,7 +18,8 @@ public class CricketDto implements Serializable, Comparator<CricketDto> {
     private LocalDate endDate;
 
     @Override
-    public int compare(CricketDto o1, CricketDto o2) {
-        return Integer.compare(o1.noOfMatches,o2.noOfMatches);
+    public int compareTo(CricketDto o) {
+        return Integer.compare(o.noOfMatches, this.noOfMatches);
+        //or return this.noOfMatches - o.noOfMatches;
     }
 }

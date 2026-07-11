@@ -1,10 +1,7 @@
 package com.xworkz.sort.runner;
 
 import com.xworkz.sort.dto.CricketDto;
-import com.xworkz.sort.sort.CricketCountryComparator;
-import com.xworkz.sort.sort.CricketEndDateComparator;
-import com.xworkz.sort.sort.CricketNoOfMarchesComparable;
-import com.xworkz.sort.sort.CricketStartDateComparator;
+import com.xworkz.sort.sort.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,21 +33,25 @@ public class CricketDtoComparatorRunner {
         list.add(cricketDto10);
         list.add(cricketDto);
 
-        System.out.println("-------------sorting by country--------------------");
-        Collections.sort(list,new CricketCountryComparator());
-        list.forEach(System.out::println);
+//        System.out.println("-------------sorting by country--------------------");
+//        Collections.sort(list,new CricketCountryComparator());
+//        list.forEach(System.out::println);
+//
+//        System.out.println("\n----------------------sorting by noOfMatches-------------------------");
+//
+//         Collections.sort(list,new CricketNoOfMarchesComparable());
+//         list.forEach(System.out::println);
+//
+//         System.out.println("\n----------------------sorting by startDate-------------------------");
+//         Collections.sort(list,new CricketStartDateComparator());
+//         list.forEach(System.out::println);
+//
+//        System.out.println("\n-----------------------sorting by endDate-------------------------");
+//        Collections.sort(list,new CricketEndDateComparator());
+//        list.forEach(System.out::println);
 
-        System.out.println("\n----------------------sorting by noOfMatches-------------------------");
-
-         Collections.sort(list,new CricketNoOfMarchesComparable());
-         list.forEach(System.out::println);
-
-         System.out.println("\n----------------------sorting by startDate-------------------------");
-         Collections.sort(list,new CricketStartDateComparator());
-         list.forEach(System.out::println);
-
-        System.out.println("\n-----------------------sorting by endDate-------------------------");
-        Collections.sort(list,new CricketEndDateComparator());
+        System.out.println("\n-----------------------sorting by teamName-------------------------");
+        Collections.sort(list,new CricketTeamNameComparator());
         list.forEach(System.out::println);
     }
 }

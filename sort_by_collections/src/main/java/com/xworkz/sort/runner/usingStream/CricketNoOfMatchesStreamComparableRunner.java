@@ -41,7 +41,8 @@ public class CricketNoOfMatchesStreamComparableRunner {
         listt.stream()
                 .filter(cricketdto->cricketdto.getCountry().length()>4)
                 .sorted(new CricketCountryStreamComparator())
+                .map(cricketdto->cricketdto.getCountry())
+                //or map(CricketDto::getCountry)
                 .forEach(System.out::println);
-
     }
 }

@@ -1,6 +1,7 @@
 package com.xworkz.sort.runner.usingStream;
 
 import com.xworkz.sort.dto.DiseaseDto;
+import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseEtiologyComparator;
 import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseNameComparator;
 import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseSymptomsComparator;
 
@@ -93,5 +94,15 @@ public class DiseaseBasicRunner {
                 .map(diseasedto->diseasedto.getSymptoms().contains("respiration"))
                 .forEach(System.out::println);
 
+
+        //--------------------Terminal operations------------------------------
+
+        System.out.println("----------------------------count----------------------------");
+        long count=diseases.stream()
+                .filter(diseasedto->!diseasedto.getEtiology().isEmpty())
+                .sorted(new DiseaseEtiologyComparator())
+                .map(diseasedto->diseasedto.getEtiology().concat(" root"))
+                .count();
+        System.out.println("count value ="+count);
     }
 }

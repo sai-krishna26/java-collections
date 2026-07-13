@@ -109,19 +109,18 @@ public class DiseaseBasicRunner {
         System.out.println("Total count ="+totalCount);
 
         System.out.println("----------------------------Collect to list----------------------------");
-        List<String> nameList=diseases.stream()
+        diseases.stream()
                 .filter(diseasedto->!diseasedto.getName().isEmpty())
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
-                .collect(Collectors.toList());
-        System.out.println("Collected list ="+nameList);
+                .forEach(name->System.out.println("Collected list ="+name));
 
         System.out.println("----------------------------Collect to set----------------------------");
-        Set<String> nameSet=diseases.stream()
+        diseases.stream()
                 .filter(diseasedto->!diseasedto.getName().isEmpty())
                 .map(DiseaseDto::getName)
-                .collect(Collectors.toSet());
-        System.out.println("Collected set ="+nameSet);
+                .distinct()
+                .forEach(name->System.out.println("Collected set ="+name));
 
         System.out.println("----------------------------Collect to map----------------------------");
         Map<Integer,String> diseaseMap=diseases.stream()
@@ -211,76 +210,42 @@ public class DiseaseBasicRunner {
                 .findFirst();
         System.out.println("First chronic ="+firstFiltered.map(DiseaseDto::getName).orElse("Not found"));
 
-        System.out.println("----------------------------Optional handling----------------------------");
-        Optional<DiseaseDto> optionalResult=diseases.stream()
-                .filter(diseasedto->diseasedto.getName().equals("Malaria"))
-                .findFirst();
-        optionalResult.ifPresentOrElse(
-                diseasedto->System.out.println("Found: "+diseasedto.getName()),
-                ()->System.out.println("Not found")
-        );
 
         System.out.println("----------------------------distinct----------------------------");
-        List<String> distinctCures=diseases.stream()
+        diseases.stream()
                 .map(DiseaseDto::getCure)
                 .distinct()
-                .collect(Collectors.toList());
-        System.out.println("Distinct cures ="+distinctCures);
+                .forEach(cure->System.out.println("Distinct cures ="+cure));
 
         System.out.println("----------------------------limit----------------------------");
-        List<String> limited=diseases.stream()
+        diseases.stream()
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
                 .limit(3)
-                .collect(Collectors.toList());
-        System.out.println("First 3 names ="+limited);
+                .forEach(name->System.out.println("First 3 names ="+name));
 
         System.out.println("----------------------------skip----------------------------");
-        List<String> skipped=diseases.stream()
+        diseases.stream()
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
                 .skip(2)
-                .collect(Collectors.toList());
-        System.out.println("Names after skipping 2 ="+skipped);
+                .forEach(name->System.out.println("Names after skipping 2 ="+name));
 
         System.out.println("----------------------------limit after filter----------------------------");
-        List<String> filteredLimited=diseases.stream()
+        diseases.stream()
                 .filter(diseasedto->diseasedto.getName().startsWith("T"))
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
                 .limit(2)
-                .collect(Collectors.toList());
-        System.out.println("First 2 starting with T ="+filteredLimited);
+                .forEach(name->System.out.println("First 2 starting with T ="+name));
 
         System.out.println("----------------------------skip and limit (pagination)----------------------------");
-        List<String> paginated=diseases.stream()
+        diseases.stream()
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
                 .skip(2)
                 .limit(2)
-                .collect(Collectors.toList());
-        System.out.println("Paginated (skip 2, limit 2) ="+paginated);
+                .forEach(name->System.out.println("Paginated (skip 2, limit 2) ="+name));
 
-        System.out.println("----------------------------flatMap----------------------------");
-        List<String> symptomsList=diseases.stream()
-                .map(diseasedto->diseasedto.getSymptoms().split(","))
-                .flatMap(Arrays::stream)
-                .map(String::trim)
-                .collect(Collectors.toList());
-        System.out.println("Flattened symptoms ="+symptomsList);
-
-        System.out.println("----------------------------flatMap on objects----------------------------");
-        List<String> allFields=diseases.stream()
-                .flatMap(diseasedto->Arrays.asList(diseasedto.getName(),diseasedto.getCure(),diseasedto.getPrevention()).stream())
-                .collect(Collectors.toList());
-        System.out.println("All fields flattened ="+allFields);
-
-        System.out.println("----------------------------peek----------------------------");
-        List<String> peeked=diseases.stream()
-                .filter(diseasedto->diseasedto.getId()>2)
-                .peek(diseasedto->System.out.println("Processing: "+diseasedto.getName()))
-                .map(DiseaseDto::getName)
-                .collect(Collectors.toList());
-        System.out.println("Peeked result ="+peeked);
     }
 }

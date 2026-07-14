@@ -4,6 +4,7 @@ import com.xworkz.sort.dto.DiseaseDto;
 import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseEtiologyComparator;
 import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseNameComparator;
 import com.xworkz.sort.sort.usingStreamSort.comparator.DiseaseSymptomsComparator;
+import netscape.security.UserTarget;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -109,18 +110,22 @@ public class DiseaseBasicRunner {
         System.out.println("Total count ="+totalCount);
 
         System.out.println("----------------------------Collect to list----------------------------");
-        diseases.stream()
+        List<String> names = diseases.stream()
                 .filter(diseasedto->!diseasedto.getName().isEmpty())
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
-                .forEach(name->System.out.println("Collected list ="+name));
+                .collect(Collectors.toList());
+                // or names.forEach(System.out::println);
+        System.out.println(names);
 
         System.out.println("----------------------------Collect to set----------------------------");
-        diseases.stream()
+        Set<String>names1=diseases.stream()
                 .filter(diseasedto->!diseasedto.getName().isEmpty())
                 .map(DiseaseDto::getName)
                 .distinct()
-                .forEach(name->System.out.println("Collected set ="+name));
+                .collect(Collectors.toSet());
+                names1.forEach(System.out::println);
+        System.out.println("set size: "+names1.size());
 
         System.out.println("----------------------------Collect to map----------------------------");
         Map<Integer,String> diseaseMap=diseases.stream()
@@ -128,12 +133,13 @@ public class DiseaseBasicRunner {
                 .collect(Collectors.toMap(DiseaseDto::getId,DiseaseDto::getName));
         System.out.println("Collected map ="+diseaseMap);
 
+
         System.out.println("----------------------------Collect joining----------------------------");
         String joinedNames=diseases.stream()
                 .filter(diseasedto->!diseasedto.getName().isEmpty())
                 .sorted(new DiseaseNameComparator())
                 .map(DiseaseDto::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(",, "));
         System.out.println("Joined names ="+joinedNames);
 
         System.out.println("----------------------------Collect grouping----------------------------");
@@ -150,6 +156,7 @@ public class DiseaseBasicRunner {
         System.out.println("----------------------------Reduce to sum----------------------------");
         int sum=diseases.stream()
                 .map(DiseaseDto::getId)
+                //.reduce(0,Integer::sum);
                 .reduce(0,Integer::sum);
         System.out.println("Sum of ids ="+sum);
 
@@ -188,7 +195,7 @@ public class DiseaseBasicRunner {
 
         System.out.println("----------------------------Match empty stream----------------------------");
         boolean emptyMatch=diseases.stream()
-                .filter(diseasedto->diseasedto.getName().equals("NonExistent"))
+                .filter(diseasedto->diseasedto.getName().equals("Fever"))
                 .anyMatch(d->true);
         System.out.println("Empty stream anyMatch ="+emptyMatch);
 

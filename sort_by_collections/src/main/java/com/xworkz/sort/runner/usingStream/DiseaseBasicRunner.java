@@ -254,5 +254,12 @@ public class DiseaseBasicRunner {
                 .limit(2)
                 .forEach(name->System.out.println("Paginated (skip 2, limit 2) ="+name));
 
+        //reverse sorting
+
+        System.out.println("----------------------------reverse sorting----------------------------");
+        diseases.stream()
+                .sorted(new DiseaseNameComparator().reversed())
+                .map(DiseaseDto::getName)
+                .forEach(name->System.out.println("Reversed names ="+name));
     }
 }

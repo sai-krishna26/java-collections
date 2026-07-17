@@ -1,4 +1,6 @@
-package com.xworkz.set_sorting;
+package com.xworkz.set_sorting.impl;
+
+import com.xworkz.set_sorting.dto.SuitcaseDto;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -44,7 +46,7 @@ public class suitcaseRunner
 
         System.out.println("-------------------------------------------");
 
-        TreeSet<SuitcaseDto> treeSet = new TreeSet<>();//SuitcaseDto cannot be cast to java.lang.Comparable
+        TreeSet<SuitcaseDto> treeSet = new TreeSet<>();
         treeSet.add(suitcaseDto6);
         treeSet.add(suitcaseDto7);
         treeSet.add(suitcaseDto8);

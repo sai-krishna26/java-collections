@@ -1,4 +1,4 @@
-package com.xworkz.set_sorting.impl;
+package com.xworkz.set_sorting.runner;
 
 import com.xworkz.set_sorting.dto.SuitcaseDto;
 

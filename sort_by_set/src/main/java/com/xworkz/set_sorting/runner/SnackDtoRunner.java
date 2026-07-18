@@ -123,16 +123,16 @@ public class SnackDtoRunner
         System.out.println("MainSet contains all elements from checkList: "+containsAll);
 
         System.out.println("------------------HASHSET FROM LIST------------------");
-//        List<SnackDto> snackList = new ArrayList<>();
-//        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
-//        snackList.add(new SnackDto("Pani puri","salt",8.9,40));
-//        snackList.add(new SnackDto("Bhel","spicy",15.98,45));
-//        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
-//
-//        Set<SnackDto> setFromList = new HashSet<>(snackList);
-//        System.out.println("List size: "+snackList.size());
-//        System.out.println("HashSet from List size: "+setFromList.size());
-//        setFromList.forEach(System.out::println);
+        List<SnackDto> snackList = new ArrayList<>();
+        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
+        snackList.add(new SnackDto("Pani puri","salt",8.9,40));
+        snackList.add(new SnackDto("Bhel","spicy",15.98,45));
+        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
+
+        Set<SnackDto> setFromList = new HashSet<>(snackList);
+        System.out.println("List size: "+snackList.size());
+        System.out.println("HashSet from List size: "+setFromList.size());
+        setFromList.forEach(System.out::println);
 
         System.out.println("------------------HASHSET FROM ARRAY------------------");
         SnackDto[] snackArray2 = {

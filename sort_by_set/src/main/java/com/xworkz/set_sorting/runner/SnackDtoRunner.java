@@ -123,16 +123,16 @@ public class SnackDtoRunner
         System.out.println("MainSet contains all elements from checkList: "+containsAll);
 
         System.out.println("------------------HASHSET FROM LIST------------------");
-        List<SnackDto> snackList = new ArrayList<>();
-        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
-        snackList.add(new SnackDto("Pani puri","salt",8.9,40));
-        snackList.add(new SnackDto("Bhel","spicy",15.98,45));
-        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
-
-        Set<SnackDto> setFromList = new HashSet<>(snackList);
-        System.out.println("List size: "+snackList.size());
-        System.out.println("HashSet from List size: "+setFromList.size());
-        setFromList.forEach(System.out::println);
+//        List<SnackDto> snackList = new ArrayList<>();
+//        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
+//        snackList.add(new SnackDto("Pani puri","salt",8.9,40));
+//        snackList.add(new SnackDto("Bhel","spicy",15.98,45));
+//        snackList.add(new SnackDto("Samosa","mixed",12.98,20));
+//
+//        Set<SnackDto> setFromList = new HashSet<>(snackList);
+//        System.out.println("List size: "+snackList.size());
+//        System.out.println("HashSet from List size: "+setFromList.size());
+//        setFromList.forEach(System.out::println);
 
         System.out.println("------------------HASHSET FROM ARRAY------------------");
         SnackDto[] snackArray2 = {
@@ -381,9 +381,27 @@ public class SnackDtoRunner
 
         System.out.println("------------------USE CEILING (LEAST WITH PRICE ≥ 42)------------------");
         SnackDto ceiling = headSetTree.ceiling(floorRef);
-        if(ceiling != null) {
+        if(ceiling != null)
+        {
             System.out.println("Ceiling (least with price ≥ 42): "+ceiling+" - Price: "+ceiling.getPrice());
         }
+
+        System.out.println("------------------CONVERT BETWEEN HASHSET AND TREESET------------------");
+        HashSet<SnackDto> hashSet = new HashSet<>();
+        hashSet.add(new SnackDto("Samosa","mixed",12.98,20));
+        hashSet.add(new SnackDto("roll","spicy",16.98,50));
+        hashSet.add(new SnackDto("Bhel","spicy",15.98,45));
+
+        TreeSet<SnackDto> fromHashSet = new TreeSet<>(Comparator.comparing(SnackDto::getName));
+        fromHashSet.addAll(hashSet);
+        System.out.println("TreeSet from HashSet:");
+        fromHashSet.forEach(System.out::println);
+
+        HashSet<SnackDto> fromTreeSet = new HashSet<>(fromHashSet);
+        System.out.println("HashSet from TreeSet:");
+        fromTreeSet.forEach(System.out::println);
+
+
 
     }
 }

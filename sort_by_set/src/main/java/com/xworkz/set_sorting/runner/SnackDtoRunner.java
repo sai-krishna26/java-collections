@@ -401,7 +401,5 @@ public class SnackDtoRunner
         System.out.println("HashSet from TreeSet:");
         fromTreeSet.forEach(System.out::println);
 
-
-
     }
 }

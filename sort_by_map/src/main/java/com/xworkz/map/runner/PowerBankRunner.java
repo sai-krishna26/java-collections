@@ -17,5 +17,14 @@ public class PowerBankRunner {
         System.out.println(map.get(1));
         System.out.println(map.containsKey(2));
         map.forEach((key,value)->System.out.println(key+" "+value));
+        System.out.println(map.containsValue(new PowerBankDto("realme",1000,"black",2500.0)));
+        System.out.println(map.keySet());
+        System.out.println("size before remove:"+map.size());
+        map.remove(4);
+        System.out.println("size after remove:"+map.size());
+        System.out.println(map.values());
+        System.out.println(map.entrySet());
+
+
     }
 }

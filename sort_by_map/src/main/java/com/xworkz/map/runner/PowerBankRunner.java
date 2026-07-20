@@ -4,6 +4,8 @@ import com.xworkz.map.dto.PowerBankDto;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
 
 public class PowerBankRunner {
     public static void main(String[] args)
@@ -24,6 +26,12 @@ public class PowerBankRunner {
         System.out.println("size after remove:"+map.size());
         System.out.println(map.values());
         System.out.println(map.entrySet());
+
+        Set<?> key=map.keySet();
+        key.forEach(k->System.out.println(k));
+
+
+
 
 
     }

@@ -16,7 +16,7 @@ public class AllMethodsOfMapWithCmState {
         state.put(new StateDto("Kerala","Thiruvananthapuram"),new ChiefMinisterDto("Satish","INDIA"));
         state.put(new StateDto("Maharashtra","Mumbai"),new ChiefMinisterDto("Eknath Shinde","NDA"));
         state.put(new StateDto("Delhi","New Delhi"),new ChiefMinisterDto("Arvind Kejriwal","AAP"));
-        state.put(new StateDto("Delhi","New Delhi"),new ChiefMinisterDto(" Kejriwal","AAP"));
+//        state.put(new StateDto("Delhi","New Delhi"),new ChiefMinisterDto(" Arvind Kejriwal","AAP"));
         System.out.println("---------------------entries of Map---------------------");
         state.forEach((key,value)->System.out.println(key+" "+value));
         System.out.println("---------------------KeySet()--------------------------");
@@ -25,8 +25,16 @@ public class AllMethodsOfMapWithCmState {
         System.out.println(state.values());
         System.out.println("---------------------entrySet()--------------------------");
         System.out.println(state.entrySet());
-        System.out.println("---------------------size()--------------------------");
-        System.out.println("size of the map: "+state.size());
+        System.out.println("---------------------remove()--------------------------");
+//        state.remove(new StateDto("Delhi","New Delhi"));
+
+//        state.forEach((key,value)->System.out.println(key+" "+value));
+//        System.out.println("size of the map: "+state.size());
+        boolean check=state.remove(new StateDto("Tamil Nadu","Chennai"),new ChiefMinisterDto("Vijay","TVK"));
+
+        System.out.println(check);
+        //        System.out.println("---------------------size()--------------------------");
+//        System.out.println("size of the map: "+state.size());
 //        state.clear();
 //        System.out.println("size after clear: "+state.size());
     }

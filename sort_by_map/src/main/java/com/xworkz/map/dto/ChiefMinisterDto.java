@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-//@EqualsAndHashCode
+@EqualsAndHashCode
 public class ChiefMinisterDto {
     private String name;
     private String party;

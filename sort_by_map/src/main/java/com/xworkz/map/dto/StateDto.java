@@ -11,7 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 //@EqualsAndHashCode
-public class StateDto implements Serializable {
+public class StateDto implements Serializable,Comparable<StateDto> {
     private String stateName;
     private String capital;
 
@@ -20,7 +20,7 @@ public class StateDto implements Serializable {
         if (!(obj instanceof StateDto))  return false;
 
         StateDto stateDto=(StateDto)obj;
-        return stateName.equals(stateDto.stateName);
+        return stateName.equals(stateDto.stateName) && capital.equals(stateDto.capital);
     }
 
     @Override
@@ -28,5 +28,10 @@ public class StateDto implements Serializable {
         int result= Objects.hashCode(stateName);
         result=31*result+Objects.hashCode(capital);
         return result;
+    }
+
+    @Override
+    public int compareTo(StateDto o) {
+        return this.stateName.compareTo(o.stateName) ;
     }
 }

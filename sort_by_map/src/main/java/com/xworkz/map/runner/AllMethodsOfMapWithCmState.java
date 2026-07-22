@@ -71,7 +71,7 @@ public class AllMethodsOfMapWithCmState {
         System.out.println("cmd: "+cmd);
 
         ChiefMinisterDto cmd2=state.getOrDefault(new StateDto("Jarkhand","Ranchi"),null);
-        System.out.println("cmd2: "+cmd2);// if we pass non-existing key that will return the value as a default value else, it will return the original value
+        System.out.println("cmd2: "+cmd2);// if we pass non-existing key that will return the value as a default value(value what we passed as a value) else, it will return the original value
 
         System.out.println("---------------------isEmpty()--------------------------");
         boolean emptyCheck=state.isEmpty();
@@ -103,5 +103,12 @@ public class AllMethodsOfMapWithCmState {
          System.out.println("-----------------------clear()-----------------------");
         state.clear();
         System.out.println("size after clear: "+state.size());
+
+        state2.clear();
+        System.out.println("size after clear: "+state2.size());
+        state2.forEach((k,v)-> System.out.println(k+" "+v));
+
+
+
     }
 }
